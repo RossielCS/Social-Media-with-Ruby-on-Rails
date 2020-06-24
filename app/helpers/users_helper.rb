@@ -18,4 +18,11 @@ module UsersHelper
     list += [current_user.id]
     list
   end
+
+  def requested_and_received
+    list = current_user.friendships.map { |x| x.friend_id if x.status.nil? }
+    list += current_user.received_friendships.map { |x| x.user_id if x.status.nil? }
+    users = User.where(id: list)
+    users
+  end
 end

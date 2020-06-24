@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorSocialScaffold</title>
+    <title>Stay in Touch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -20,7 +20,17 @@
         <div class="menu-item">
           <%= menu_link_to 'Profile', current_user %>
         </div>
+        <div class="menu-item">
+          <% if current_user %>
+            <% count = requested_and_received.count %>
+          <% end %>
+          <% if count == 0 %>
+            <% count = ''%>
+          <% end %>
+          <%= link_to image_tag('bell.png') + "#{count}" , user_notifications_path, class: 'notification'%>            
+        </div>
       </div>
+
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
