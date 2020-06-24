@@ -16,7 +16,7 @@ RSpec.feature 'Notifications', type: :feature do
     expect(page).to have_css('.notification', text: '1')
     find('.notification', match: :first).click
     expect(page).to have_content('Notifications')
-    expect(page).to have_content('You have a friendship request from:')
+    expect(page).to have_content('You received a friendship request from:')
     expect(page).to have_content('Name: Alex')
     expect(page).to have_selector(:link_or_button, 'Accept Friendship')
     expect(page).to have_selector(:link_or_button, 'Reject Friendship')
@@ -30,7 +30,7 @@ RSpec.feature 'Notifications', type: :feature do
     expect(page).to have_css('.notification', text: '1')
     find('.notification', match: :first).click
     expect(page).to have_content('Notifications')
-    expect(page).to have_content('You have a sent friendship request to:')
+    expect(page).to have_content('You have sent a friendship request to:')
     expect(page).to have_content('Name: Emma')
     expect(page).to have_content('Pending Response')
   end
@@ -43,7 +43,7 @@ RSpec.feature 'Notifications', type: :feature do
     expect(page).to have_css('.notification', text: '1')
     find('.notification', match: :first).click
     expect(page).to have_content('Notifications')
-    expect(page).to have_content('You have a friendship request from:')
+    expect(page).to have_content('You received a friendship request from:')
     expect(page).to have_content('Name: Alex')
     click_button 'Accept Friendship'
     expect(page).to have_content('Friendship has been accepted')
@@ -59,7 +59,7 @@ RSpec.feature 'Notifications', type: :feature do
     expect(page).to have_css('.notification', text: '1')
     find('.notification', match: :first).click
     expect(page).to have_content('Notifications')
-    expect(page).to have_content('You have a friendship request from:')
+    expect(page).to have_content('You received a friendship request from:')
     expect(page).to have_content('Name: Alex')
     click_button 'Reject Friendship'
     expect(page).to have_content('Friendship has been rejected')

@@ -1,41 +1,14 @@
 <h2>Notifications</h2>
 
 <br>
-<% if @users.count == 0%>
-<p>You don't have notifications at the moment.</p>
-<% end %>
+<%= zero_notifications(@users) %>
 <br>
 <section class="users-section">
   <ul class="users-list">
   <% @users.each do |user| %>
     <li>         
       <% friendship = verify_friendship(user) %>
-      <% if friendship.user_id == user.id %>
-        <p> You have a friendship request from: </p>
-        <br>
-        <div class="button-parent">
-          <div>
-            <%= gravatar_for user %>
-            Name:
-            <%= user.name %>
-          </div> 
-          <div>
-            <%= button_to 'Accept Friendship', friendship_path(friendship.id), method: :put %>
-            <%= button_to 'Reject Friendship', friendship_path(friendship.id), method: :delete %>
-          </div>
-        </div>
-      <% else %>
-        <p> You have a sent friendship request to: </p>
-        <br>
-        <div class="button-parent">
-          <div>
-            <%= gravatar_for user%>
-            Name:
-            <%= user.name %>
-          </div> 
-          <p class="button-friendship status pending"> Pending Response </p>
-        </div>
-      <% end %> 
+      <%= friends_notifications(friendship, user) %>
     </li>
     <br>
   <% end %>

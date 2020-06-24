@@ -21,21 +21,10 @@
           <%= menu_link_to 'Profile', current_user %>
         </div>
         <div class="menu-item">
-          <% if current_user %>
-            <% count = requested_and_received.count %>
-          <% end %>
-          <% if count == 0 %>
-            <% count = ''%>
-          <% end %>
-          <%= link_to image_tag('bell.png') + "#{count}" , user_notifications_path, class: 'notification'%>            
+          <%= notification_icon %>                      
         </div>
       </div>
-
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
+      <%= signin_signout %>      
     </nav>
     <% if notice.present? %>
       <div class="notice">

@@ -1,21 +1,9 @@
 <section class="user-section">
-  <% if @user.id == current_user.id %>
-    <h2><%= "Welcome #{@user.name}!" %></h2>
-  <% else %>
-    <div class="button-parent">
-      <h2><%= "Name: #{@user.name}" %></h2>
-      <%= render 'friendship_button', user: @user %>    
-    </div>
-  <% end %>
+  <%= gravatar_for @user %>
+  <%= verify_user(@user) %>
   
   <article class="timeline">
-    <% if friends_and_i.include? @user.id%>
-      <h3>Recent posts:</h3>
-      <ul class="posts">
-        <%= render @posts %>
-      </ul>
-    <% else %>
-      <p>You don't have the required permition to see this user's posts.</p>
-    <% end %>  
+    <br><br>
+   <%= friend_posts(@user, @posts)%>  
   </article>
 </section>
