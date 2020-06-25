@@ -8,7 +8,10 @@ class FriendshipsController < ApplicationController
   # rubocop:disable Style/ConditionalAssignment
   def create
     @friendship = Friendship.new(friendship_params)
-    if @friendship.save
+    @friendship.status = 'sent'
+    @friendship_two = Friendship.new(user_id: friendship_params[:friend_id], friend_id: friendship_params[:user_id])
+    @friendship_two.status = 'received'
+    if @friendship.save && @friendship_two.save
       flash[:notice] = 'Friendship request sent successfully'
     else
       flash[:notice] = 'Friendship request couldn\'t be sent'

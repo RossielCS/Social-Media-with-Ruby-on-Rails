@@ -20,9 +20,13 @@ module UsersHelper
   end
 
   def requested_and_received
-    list = current_user.friendships.map { |x| x.friend_id if x.status.nil? }
-    list += current_user.received_friendships.map { |x| x.user_id if x.status.nil? }
+    list = current_user.friendships.map { |x| x.user_id if x.user_id != current_user.id }
+    list += current_user.received_friendships.map { |x| x.user_id if x.user_id != current_user.id }
+    p 'Hi'
+    p list
     users = User.where(id: list)
+    p users
+    p 'BYE'
     users
   end
 
@@ -49,7 +53,7 @@ module UsersHelper
   end
 
   def friends_notifications(friendship, user)
-    if friendship.user_id == user.id
+    if friendship.status == 'received'
       render 'friendship_received_request', user: user, friendship: friendship
     else
       render 'friendship_sent_request', user: user

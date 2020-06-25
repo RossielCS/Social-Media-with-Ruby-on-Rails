@@ -1,7 +1,7 @@
 module FriendshipsHelper
   def verify_friendship(friend_id)
-    status = Friendship.where('(user_id = ? and friend_id = ?) OR (user_id = ? and friend_id = ?)',
-                              current_user.id, friend_id, friend_id, current_user.id).first
+    status = Friendship.where('user_id = ? and friend_id = ?',
+                              current_user.id, friend_id.id).first
     status
   end
 
@@ -12,12 +12,10 @@ module FriendshipsHelper
                   (button_to 'Invite to friendship',
                              friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }),
                              method: :post, class: 'button-friendship'), class: 'button-friendship')
-    elsif friendship.status
-
-    elsif friendship.user_id == user.id
+    elsif friendship.status == 'received'
       content_tag(:div, (button_to 'Accept Friendship', friendship_path(friendship.id), method: :put) +
                           (button_to 'Reject Friendship', friendship_path(friendship.id), method: :delete))
-    else
+    elsif friendship.status == 'sent'
       content_tag(:p, 'Pending Response', class: 'button-friendship status pending')
     end
   end
