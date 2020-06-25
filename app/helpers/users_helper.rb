@@ -20,13 +20,8 @@ module UsersHelper
   end
 
   def requested_and_received
-    list = current_user.friendships.map { |x| x.user_id if x.user_id != current_user.id }
-    list += current_user.received_friendships.map { |x| x.user_id if x.user_id != current_user.id }
-    p 'Hi'
-    p list
-    users = User.where(id: list)
-    p users
-    p 'BYE'
+    users = User.joins(friendships: :friend).where('(friend_id = ? and status = ?) OR (friend_id = ? and status = ?)',
+                                                   current_user.id, 'sent', current_user.id, 'received')
     users
   end
 

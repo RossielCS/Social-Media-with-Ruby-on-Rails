@@ -7,7 +7,7 @@
     <%= user.name %>
   </div> 
   <div>
-    <%= button_to 'Accept Friendship', friendship_path(friendship.id), method: :put %>
-    <%= button_to 'Reject Friendship', friendship_path(friendship.id), method: :delete %>
+    <%= button_to 'Accept Friendship', friendship_path(user.id), method: :put %>
+    <%= button_to 'Reject Friendship', friendship_path(user.id), method: :delete %>
   </div>
 </div>

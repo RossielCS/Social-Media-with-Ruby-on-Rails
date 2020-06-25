@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+  include FriendshipsHelper
   def show; end
 
   def new
@@ -21,13 +22,15 @@ class FriendshipsController < ApplicationController
   # rubocop:enable Style/ConditionalAssignment
 
   def update
-    Friendship.find(params[:id]).update_attribute(:status, true)
+    friendships_id = find_friendships(params[:id])
+    Friendship.where(id: friendships_id).update_all(status: 'accepted')
     flash[:notice] = 'Friendship has been accepted'
     friendship_redirect
   end
 
   def destroy
-    Friendship.find(params[:id]).destroy
+    friendships_id = find_friendships(params[:id])
+    Friendship.where(id: friendships_id).destroy_all
     flash[:notice] = 'Friendship has been rejected'
     friendship_redirect
   end

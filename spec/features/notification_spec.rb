@@ -5,7 +5,8 @@ RSpec.feature 'Notifications', type: :feature do
   before :each do
     @user_one = User.create(name: 'Emma', email: 'emma@mail.com', password: '123456')
     @user_two = User.create(name: 'Alex', email: 'alex@mail.com', password: '123456')
-    @friendship = Friendship.create(user_id: @user_two.id, friend_id: @user_one.id, status: nil)
+    @friendship = Friendship.create(user_id: @user_two.id, friend_id: @user_one.id, status: 'sent')
+    @friendship = Friendship.create(user_id: @user_one.id, friend_id: @user_two.id, status: 'received')
   end
 
   it 'shows the quantity of notifications' do

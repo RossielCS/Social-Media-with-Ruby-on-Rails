@@ -7,7 +7,8 @@ RSpec.feature 'Friendships', type: :feature do
     @user_one = User.create(name: 'Emma', email: 'emma@mail.com', password: '123456')
     @user_two = User.create(name: 'Alex', email: 'alex@mail.com', password: '123456')
     @user_three = User.create(name: 'Lucas', email: 'lucas@mail.com', password: '123456')
-    @friendship = Friendship.create(user_id: @user_three.id, friend_id: @user_one.id, status: nil)
+    @friendship = Friendship.create(user_id: @user_three.id, friend_id: @user_one.id, status: 'sent')
+    @friendship = Friendship.create(user_id: @user_one.id, friend_id: @user_three.id, status: 'received')
   end
 
   it 'requests friendship to another user' do
