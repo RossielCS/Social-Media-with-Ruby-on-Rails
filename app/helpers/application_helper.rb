@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include UsersHelper
   def menu_link_to(link_text, link_path)
     class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
 
@@ -13,6 +14,21 @@ module ApplicationHelper
       link_to('Dislike!', post_like_path(id: like.id, post_id: post.id), method: :delete)
     else
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
+    end
+  end
+
+  def notification_icon
+    count = 0
+    count = requested_and_received.count if current_user
+    count = '' if count.zero?
+    link_to image_tag('bell.png') + count.to_s, user_notifications_path, class: 'notification'
+  end
+
+  def signin_signout
+    if current_user
+      link_to 'Sign out', destroy_user_session_path, method: :delete
+    else
+      link_to 'Sign in', user_session_path
     end
   end
 end

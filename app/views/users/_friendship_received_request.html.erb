@@ -1,0 +1,13 @@
+<p> You received a friendship request from: </p>
+<br>
+<div class="button-parent">
+  <div>
+    <%= gravatar_for user %>
+    Name:
+    <%= user.name %>
+  </div> 
+  <div>
+    <%= button_to 'Accept Friendship', friendship_path(friendship.id), method: :put %>
+    <%= button_to 'Reject Friendship', friendship_path(friendship.id), method: :delete %>
+  </div>
+</div>
