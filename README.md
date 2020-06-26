@@ -1,6 +1,6 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes initial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes initial code for social media app with basic styling.
 
 Here is a description of business requirements for the app:
 
@@ -23,9 +23,12 @@ We need to build a social media app called “Stay in touch”.
 - I want to be able to see “Timeline” page with posts (with number of likes and comments) written by me and all my friends (the most recent posts on the top).
 - Timeline page should be the root page of the app.
 
+## Screenshot
+![screenshot](./app/assets/images/stay_in_touch.png)
+
 ## Live Demo
 
-TBA
+You can tri it [here](https://fathomless-stream-67357.herokuapp.com/users/sign_in).
 
 ## :hammer:  Built With
 - Ruby 2.7,
@@ -122,12 +125,6 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone who's code was used
-- Inspiration
-- etc
 
 ## 📝  License
 
