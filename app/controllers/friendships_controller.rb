@@ -18,7 +18,10 @@ class FriendshipsController < ApplicationController
   # rubocop:enable Style/ConditionalAssignment
 
   def update
-    Friendship.find(params[:id]).update_attribute(:status, true)
+    @friendship = Friendship.find(params[:id])
+    @friendship.update_attribute(:status, true)
+    @friendship_two = Friendship.new(user_id: @friendship.friend_id, friend_id: @friendship.user_id, status: true)
+    @friendship_two.save
     flash[:notice] = 'Friendship has been accepted'
     friendship_redirect
   end
