@@ -28,7 +28,7 @@ We need to build a social media app called “Stay in touch”.
 
 ## Live Demo
 
-You can tri it [here](https://fathomless-stream-67357.herokuapp.com/users/sign_in).
+You can try it [here](https://fathomless-stream-67357.herokuapp.com/users/sign_in).
 
 ## :hammer:  Built With
 - Ruby 2.7,
