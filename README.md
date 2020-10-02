@@ -1,15 +1,13 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay in Touch
 
-> This repo includes initial code for social media app with basic styling.
+>This is a social media app where the user can create posts and send friendship invitations to other users as well.   
+This repo is for practicing the bi-directional self-referential relationships in ActiveRecord models.   
+It was built with Ruby on Rails, Rspec, and Capybara for unit and integration tests.
 
 Here is a description of business requirements for the app:
-
-We need to build a social media app called “Stay in touch”.
-
 1. As a guest user:
 - I want to be able to create account/log in.
 - I can see only “Sign in” and “Sign out” page.
-
 2. As a logged-in user:
 - I want to be able to see all users list.
 - I want to be able to see selected user page with their user name and all posts written by them (the most recent posts on the top).
@@ -49,17 +47,17 @@ You need to install:
 - [Ruby](https://www.ruby-lang.org/en/documentation/installation/) language.
 - [Rubygems](https://rubygems.org/pages/download).
 - [Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails).
-- [PostgreSQL](https://www.postgresql.org/download/)
+- [PostgreSQL](https://www.postgresql.org/download/).
 - An IDE (Integrated Development Environment).
 
 ### Setup
 1. Clone the repository.
 2. In your OS terminal search the repository's address and to install gems run:  
   $ `bundle install`   
-3. To setup database
-  $ `rails db:create`
+3. To setup database.  
+  $ `rails db:create`  
   $ `rails db:migrate`   
-3. Then start Rail's server   
+3. Then start Rail's server.  
   $ `rails server`   
 
 ### Usage
@@ -81,18 +79,18 @@ Integration tests for:
 
 In your terminal search the repository's address and run:  
   $ `rspec --format documentation`   
-  It will provide you well-organized output on your terminal with information about the tests.
+It will provide you well-organized output on your terminal with information about the tests.
 
 ### Deployment
 To deploy on Heroku you can check [this](https://www.theodinproject.com/courses/ruby-on-rails/lessons/preparing-for-deployment) tutorial from the Odin Project.
 
 After pushing the last changes to the remote repository, follow this steps:
-1. $ `heroku create`
-2. $ `git remote`
-3. Verify that you see heroku in the output. 
-4. $ `git push heroku master`  
-   This will push the master branch.  
-   In case you want to push anothe branch you can run   
+1. $ `heroku create`  
+2. Verify that you see heroku in the output.  
+  $ `git remote`
+3. This will push the master branch.  
+  $ `git push heroku master`  
+   In case you want to push another branch you can run   
    $ `git push heroku <branch name>:master` 
 4. Migrate the database on Heroku  
    $ `heroku run rails db:migrate` 
